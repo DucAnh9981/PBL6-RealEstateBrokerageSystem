@@ -686,6 +686,7 @@ const BasicInformation = () => {
                 </button>
               </div>
             </form>
+            
           </div>
         )}
 
@@ -1007,6 +1008,7 @@ const BasicInformation = () => {
                 </button>
               </div>
             </form>
+            
           </div>
         )}
       </div>
