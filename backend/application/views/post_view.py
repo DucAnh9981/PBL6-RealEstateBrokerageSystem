@@ -2,17 +2,13 @@ from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from application.models import *
-from application.serializers import *
+from application.serializers.post_serializer import *
 from application.utils import PostGetter
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from accounts.permission import *
 from accounts.models import *
 from accounts.serializers import *
-from django.core.paginator import Paginator
-from django.core.paginator import EmptyPage
-from django.core.paginator import PageNotAnInteger
-from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from application.utils import *
@@ -146,6 +142,8 @@ class PostView(APIView):
         # Kiểm tra và xử lý giá trị null cho các trường DecimalField
         decimal_fields = [
             "area",
+            "length",
+            "width",
             "frontage",
             "longitude",
             "latitude",
@@ -156,7 +154,6 @@ class PostView(APIView):
                 post_data[field] = None
 
         post_serializer = PostSerializer(data=post_data)
-        # post_serializer = PostSerializer(data=request.data)
 
         if post_serializer.is_valid():
             post_serializer.save()
@@ -198,6 +195,8 @@ class PostView(APIView):
         # Kiểm tra và xử lý giá trị null cho các trường DecimalField
         decimal_fields = [
             "area",
+            "length",
+            "width",
             "frontage",
             "longitude",
             "latitude",
@@ -324,6 +323,8 @@ class SearchView(APIView):
                     matches_text(post["map_sheet_number"]),
                     matches_text(post["land_parcel"]),
                     matches_text(post["area"]),
+                    matches_text(post["length"]),
+                    matches_text(post["width"]),
                     matches_text(post["frontage"]),
                     matches_text(post["bedroom"]),
                     matches_text(post["bathroom"]),
@@ -425,7 +426,7 @@ class PostReactionView(APIView):
 
         if not created:  # Đã tồn tại, nên hủy like
             reaction.delete()
-            return Response({"detail": "Unliked"}, status=status.HTTP_204_NO_CONTENT)
+            return Response({"detail": "Unliked"}, status=status.HTTP_200_OK)
         else:
             return Response({"detail": "Liked"}, status=status.HTTP_201_CREATED)
 

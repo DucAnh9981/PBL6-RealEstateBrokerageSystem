@@ -22,11 +22,17 @@ const BasicInformation = ({
   legal_status,
   frontage,
   address,
+  ward,
   district,
   city,
   description,
   longitude,
   latitude,
+  land_lot,
+  land_parcel,
+  map_sheet_number,
+  length,
+  width,
 }) => {
   const formatPrice = (price) => {
     if (price >= 1_000_000_000) {
@@ -53,12 +59,48 @@ const BasicInformation = ({
         "https://uploads-ssl.webflow.com/5c9e5fc6215b2b288eb5937d/5ce35bac5960482835eb254f_enc-home-works-inspections-north-carolina-land-surveying.jpg",
     },
     {
+      icon: faRulerCombined,
+      label: "Chiều dài",
+      value: length ? `${length} m` : null,
+      imageUrl:
+        "https://uploads-ssl.webflow.com/5c9e5fc6215b2b288eb5937d/5ce35bac5960482835eb254f_enc-home-works-inspections-north-carolina-land-surveying.jpg",
+    },
+    {
+      icon: faRulerCombined,
+      label: "Chiều rộng",
+      value: width ? `${width} m` : null,
+      imageUrl:
+        "https://uploads-ssl.webflow.com/5c9e5fc6215b2b288eb5937d/5ce35bac5960482835eb254f_enc-home-works-inspections-north-carolina-land-surveying.jpg",
+    },
+    {
       icon: faFileContract,
       label: "Pháp lý",
       value: legal_status,
       imageUrl:
         "https://thehollywoodlawyer.com/wp-content/uploads/2023/02/business-lawyer-is-currently-counseling-the-client-2022-12-16-03-44-23-utc-min-scaled.jpg",
     },
+    {
+      icon: faFileContract,
+      label: "Lô đất",
+      value: land_lot,
+      imageUrl:
+        "https://img.iproperty.com.my/angel-legacy-bds/750x1000-fit/2022/08/12/JGcIp0rf/20220812134212-c629.jpg",
+    },
+    {
+      icon: faFileContract,
+      label: "Thửa đất số",
+      value: land_parcel,
+      imageUrl:
+        "https://th.bing.com/th/id/OIP.xNtY1MNes6NAf3eGPPSo5QAAAA?rs=1&pid=ImgDetMain",
+    },
+    {
+      icon: faFileContract,
+      label: "Tờ bản đồ số",
+      value: map_sheet_number,
+      imageUrl:
+        "https://storage.timviec365.vn/timviec365/pictures/images_10_2022/khai-niem.jpg",
+    },
+
     {
       icon: faRoad,
       label: "Mặt tiền",
@@ -94,7 +136,6 @@ const BasicInformation = ({
       imageUrl:
         "https://bowa.com/wp-content/uploads/2017/08/PIN-McLean-VA-IHD-CDB-1910-Whole-Home-Renovation-Bath3-D17159-7886_01-17.jpg",
     },
-
   ].filter((item) => item.value);
 
   return (
@@ -141,7 +182,7 @@ const BasicInformation = ({
           <p className="font-semibold text-gray-700">Địa chỉ</p>
         </div>
         <p className="text-gray-800 text-lg text-center mb-6">
-          {`${address}, Quận ${district}, Thành phố ${city}`}
+          {`${address}, Phường ${ward}, Quận ${district}, Thành phố ${city}`}
         </p>
         <p className="text-gray-800 text-lg text-center mb-6">
           {`KĐ: ${longitude}, VĐ: ${latitude}`}
