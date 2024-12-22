@@ -154,7 +154,8 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^http:\/\/172\.20\.10\.3(:\d+)?$",  # Cho phép từ IP với cổng bất kỳ
     r"^http:\/\/localhost(:\d+)?$",       # Cho phép từ localhost
-    r"^http:\/\/127\.0\.0\.1(:\d+)?$",    # Cho phép từ 127.0.0.1
+    r"^http:\/\/127\.0\.0\.1(:\d+)?$",    # Cho phép từ 127.0.0.1http://192.168.1.31:8000
+     r"^http:\/\/192\.168\.1\.31(:\d+)?$",
 ]
 
 AUTH_USER_MODEL = "accounts.User"
