@@ -20,7 +20,7 @@ class ChartHelper:
             trunc_func = TruncDay
         elif period == 'month':
             start_date = end_date - timedelta(days=30)
-            trunc_func = TruncWeek
+            trunc_func = TruncDay
         elif period == 'year':
             start_date = end_date - timedelta(days=365)
             trunc_func = TruncMonth
@@ -52,7 +52,7 @@ class ChartHelper:
             trunc_func = TruncDay
         elif period == 'month':
             start_date = end_date - timedelta(days=30)
-            trunc_func = TruncWeek
+            trunc_func = TruncDay
         elif period == 'year':
             start_date = end_date - timedelta(days=365)
             trunc_func = TruncMonth
